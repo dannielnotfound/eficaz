@@ -1,10 +1,10 @@
 
-# Setup Docker Laravel 10 com PHP 8.1 e phpmyadmin
-
+# Teste Eficaz
+## Setup Docker Laravel 10, PHP 8.1 e phpmyadmin
 ### Passo a passo
 Clone Repositório
 ```sh
-git clone https://github.com/dannielnotfound/ambiente-docker-laravel-phpmyadmin.git your-preoject-name
+git clone https://github.com/dannielnotfound/ambiente-docker-laravel-phpmyadmin.git eficaz-teste
 ```sh
 cd app-laravel
 ```
@@ -22,7 +22,7 @@ APP_NAME=dannielnotfound
 APP_URL=http://localhost:8989
 
 DB_CONNECTION=mysql
-DB_HOST=mysql
+DB_HOST=db
 DB_PORT=3306
 DB_DATABASE=nome_que_desejar_db
 DB_USERNAME=nome_usuario
