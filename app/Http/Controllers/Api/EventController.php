@@ -32,7 +32,7 @@ class EventController extends Controller
     {
         $event = $this->model->create($request->all());
 
-        return $event;
+        return response()->json($event);
     }
 
     /**
