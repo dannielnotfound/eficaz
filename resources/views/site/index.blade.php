@@ -1,25 +1,24 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Index</title>
-    {{-- <script src="https://cdn.tailwindcss.com"></script> --}}
-    <style>
-  
-    </style>
-</head>
-<body>
+@extends('site.layouts.app')
+@section('title', 'Eficaz - Eventos')
+@section('content')
+<div class="container mx-auto px-4">
+    <div class="md:flex md:justify-between md:items-center mb-4">
+        <div class="flex flex-wrap items-center">
+            @include('site.partials.search')
+        </div>
+    </div>
+
+    @include('site.partials.events')
+</div>
+@endsection
+
     
-
-
-
-    <div class="container mx-auto px-4 ">
-        <h1>Todos os eventos</h1>
-        <a href="{{route('events.create')}}">Criar Evento</a>
+    
+    
         {{-- @include('site.partials.events')  CARDS de eventos--}} 
-        <table>
+        {{--
+        @include('site.partials.events') --}}
+        {{-- <table>
             <tr>
                 <th>Evento</th>
                 <th>Descrição</th>
@@ -41,7 +40,9 @@
                     </td>
                 </tr>
             @endforeach
-        </table>
+        </table> --}}
+         
+        
     </div>
 </body>
 </html>

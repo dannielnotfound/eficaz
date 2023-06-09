@@ -11,9 +11,26 @@ class EventController extends Controller
         protected Event $model
     ){}
 
-    public function index()
-    {
-        $events = $this->model->all();
+    public function index(Request $request)
+    {   
+        $filter = $request->filter;
+
+        if($filter)
+        {
+            $events =   $this->model
+                            ->where(function ($query) use ($filter) {
+                                if($filter){
+                                $query->where('name', 'like', "%{$filter}%"); 
+                                $query->orWhere('city', 'like',  "%{$filter}%"); 
+                                }
+                            })
+                            ->get();    
+        }
+        else
+        {
+            $events = $this->model->all();
+        }
+
 
         return view('site.index', compact('events'));
     }
