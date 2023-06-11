@@ -1,47 +1,28 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Index</title>
-    {{-- <script src="https://cdn.tailwindcss.com"></script> --}}
-    <style>
-  
-    </style>
-</head>
-<body>
-    
 
-
-
+<x-app-layout>
+    <x-slot name="header">
+        <h2 class="font-semibold text-xl text-gray-800 leading-tight">
+            {{ __('Todos os eventos') }}
+        </h2>
+    </x-slot>
     <div class="container mx-auto px-4 ">
-        <h1>Todos os eventos</h1>
-        <a href="{{route('events.create')}}">Criar Evento</a>
         {{-- @include('site.partials.events')  CARDS de eventos--}} 
-        <table>
-            <tr>
-                <th>Evento</th>
-                <th>Descrição</th>
-                <th>Data</th>
-                <th>Cidade</th>
-                <th>Endereço</th>
-            </tr>
+        <div class="mt-10 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
             @foreach ($events as $event)
-                <tr>
-                    <td>{{$event->name}}</td>
-                    <td>{{$event->description}}</td>
-                    <td>{{$event->date}}</td>
-                    <td>{{$event->city}}</td>
-                    <td>{{$event->address}}</td>
-                    <td>
-                        <a href="{{route('events.show', $event->id)}}">Detalhes</a>
-                        <a href="{{route('events.edit', $event->id)}}">Editar</a>
-                        <a href="{{route('events.delete', $event->id)}}">Deletar</a>
-                    </td>
-                </tr>
+            <a href="{{route('events.show', $event->id)}}" class="max-w-sm rounded overflow-hidden shadow-lg bg-white scale-100 hover:scale-105 ease-in duration-100">
+                <img class="w-full" src="https://www.apage.com.br/wp-content/uploads/2022/02/LOGO-EFICAZ-SEM-FUNDO.png" alt="{{$event->description}}">
+                <div class="px-6 py-4">
+                    <div class="font-bold text-xl mb-2">{{$event->name}}</div>
+                    <p class="text-gray-700 text-base">
+                        {{$event->description}}
+                    </p>
+                </div>
+                <div class="px-6 pt-4 pb-2">
+                    <span class="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2">{{$event->city}}</span>
+                    <span class="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2">{{$event->address}}</span>
+                </div>
+            </a>
             @endforeach
-        </table>
+        </div>
     </div>
-</body>
-</html>
+</x-app-layout>
