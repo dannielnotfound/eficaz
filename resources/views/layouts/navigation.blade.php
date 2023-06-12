@@ -86,7 +86,7 @@
                 {{ __('Eventos') }}
             </x-responsive-nav-link>
             
-            <x-responsive-nav-link :href="route('events.index')" :active="request()->routeIs('dashboard')">
+            <x-responsive-nav-link :href="route('events.user.events')" :active="request()->routeIs('events.user.events')">
                 {{ __('Meus Eventos') }}
             </x-responsive-nav-link>
 
@@ -113,14 +113,6 @@
             <div class="mt-3 space-y-1">
                 <x-responsive-nav-link :href="route('profile.edit')">
                     {{ __('Profile') }}
-                </x-responsive-nav-link>
-                
-                <x-responsive-nav-link :href="route('events.index')" :active="request()->routeIs('events.index')">
-                    {{ __('Meus Eventos') }}
-                </x-responsive-nav-link>
-    
-                <x-responsive-nav-link :href="route('events.create')" :active="request()->routeIs('events.create')">
-                    {{ __('Criar Evento') }}
                 </x-responsive-nav-link>
 
                 <!-- Authentication -->

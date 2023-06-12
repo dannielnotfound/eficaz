@@ -5,7 +5,7 @@
 </div>
 <div class="mb-4">
     <label for="description" class="block text-gray-700 font-bold mb-2">Descrição</label>
-    <textarea name="description" id="description" placeholder="Descrição" cols="30" rows="10"  value="{{$event->name ?? old('name')}}" class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:border-indigo-500"></textarea>
+    <textarea name="description" id="description"  cols="30" rows="10" placeholder="Descrição"  class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:border-indigo-500">{{$event->description ?? old('description')}}</textarea>
 </div>
 <div class="mb-4">
     <label for="date" class="block text-gray-700 font-bold mb-2">Data</label>

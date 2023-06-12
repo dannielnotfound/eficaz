@@ -36,7 +36,7 @@ class EventController extends Controller
     {   
         $user_id = auth()->id();
 
-        $user = $this->model->findOrFail($user_id);
+        $user = User::findOrFail($user_id);
     
         if (!$user) {
             return redirect()->back();
@@ -44,7 +44,7 @@ class EventController extends Controller
     
         $user_events = $this->model->where('user_id', $user_id)->get();
     
-        return view('site.show_user_events', compact('user', 'user_events'));
+        return view('site.show_user_events', compact('user_events'));
     }
 
 
@@ -70,8 +70,9 @@ class EventController extends Controller
     public function edit($id)
     {
         $event = $this->model->find($id);
-
-        if(!$event){
+        $user_id = auth()->id();
+        
+        if(!$event || $event->user->id != $user_id){
             return redirect()->back();
         }
 
@@ -81,34 +82,36 @@ class EventController extends Controller
     public function update(StoreUpdateRequest $request, $id)
     {
         $event = $this->model->find($id);
+        $user_id = auth()->id();
+
         if(!$event){
             return redirect()->back();
         }
 
-        $event->update($request->all());
+        if($event->user->id === $user_id)
+        {
+            $event->update($request->all());
+        }
+
 
         return redirect()->route('events.index');
 
     }
 
-    public function delete($id)
-    {
-        $event = $this->model->find($id);
-        if(!$event){
-            return redirect()->back();
-        }
-
-        return view('site.delete', compact('event'));
-    }
-
     public function destroy($id)
     {
         $event = $this->model->find($id);
+        $user_id = auth()->id();
+
         if(!$event){
             return redirect()->route('events.index');
         }
 
-        $event->delete();
+        if($event->user->id === $user_id)
+        {
+            $event->delete();
+        }
+
 
         return redirect()->route('events.index');
     }
