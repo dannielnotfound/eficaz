@@ -67,6 +67,27 @@ class EventController extends Controller
         return redirect()->route('events.index');
     }
 
+
+    public function join_event($event_id)
+    {
+        $event = $this->model->find($event_id);
+        $user = auth()->user();
+        $user->eventsAsParticipant()->attach($event);
+
+        // $events = $user->eventsAsParticipant;
+        // dd($events);
+        // $events = $user->events;
+        // dd($events);
+        // $a = $events->eventsAsParticipant;
+        // dd($a);
+
+        // dd($event->users());
+
+    
+        return view('site.events_as_participant', compact('eventsAsParticipant'));
+        
+    }
+
     public function edit($id)
     {
         $event = $this->model->find($id);

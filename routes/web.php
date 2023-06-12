@@ -18,10 +18,6 @@ use App\Http\Controllers\ProfileController;
 Route::get('/events', [EventController::class, 'index'])->name('events.index');
 Route::fallback([EventController::class, 'index']);
 
-// Route::get('/dashboard', function () {
-//     return view('dashboard');
-// })->middleware(['auth', 'verified'])->name('dashboard');
-
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
@@ -31,6 +27,7 @@ Route::middleware('auth')->group(function () {
     Route::get('/events/user', [EventController::class, 'show_user_events'])->name('events.user.events');
     Route::get('/events/{id}', [EventController::class, 'show'])->name('events.show');
     Route::post('/store', [EventController::class, 'store'])->name('events.store');
+    Route::post('/events/join/{id}', [EventController::class, 'join_event'])->name('event.join');
     Route::get('/events/edit/{id}', [EventController::class, 'edit'])->name('events.edit');
     Route::put('/edit/{id}', [EventController::class, 'update'])->name('events.update');
     Route::get('/events/delete/{id}', [EventController::class, 'delete'])->name('events.delete');
