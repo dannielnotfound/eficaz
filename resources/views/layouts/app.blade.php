@@ -31,6 +31,10 @@
             <main>
                 {{ $slot }}
             </main>
+
+            <footer class="bg-white shadow text-center mx-auto py-4 px-2 w-full fixed bottom-0"> 
+                <p>Desenvolvido com amor por Daniel Oliveira</p>
+            </footer>
         </div>
     </body>
 </html>

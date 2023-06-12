@@ -14,6 +14,12 @@ class Event extends Model
         "description",
         "date",
         "city",
-        "address"
+        "address",
+        "user_id"
     ];
+
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
 }

@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Event;
 use App\Http\Requests\StoreUpdateRequest;
+use Illuminate\Support\Facades\Auth;
+
 class EventController extends Controller
 {
     public function __construct(
@@ -37,7 +39,14 @@ class EventController extends Controller
     public function store(StoreUpdateRequest $request)
     {
 
-        $this->model->create($request->all());
+        // Obtém o usuário autenticado
+        $user = Auth::user();
+
+        $data = $request->validated();
+        $data['user_id'] = $user->id;
+        $this->model->fill($data);
+        $this->model->save();
+
         return redirect()->route('events.index');
     }
 

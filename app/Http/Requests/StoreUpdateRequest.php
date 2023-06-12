@@ -27,7 +27,7 @@ class StoreUpdateRequest extends FormRequest
             'description' => 'required|min:3|max:10000', 
             'date' => 'required', 
             'city' => 'required|min:3|max:255',
-            'address' => 'required|min:3|max:255'
+            'address' => 'required|min:3|max:255',
         ];
 
         if($this->method() === 'PUT' || $this->method() == 'PATCH'){
