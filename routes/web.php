@@ -16,7 +16,7 @@ use App\Http\Controllers\ProfileController;
 */
 
 Route::get('/events', [EventController::class, 'index'])->name('events.index');
-Route::fallback([EventController::class, 'index']);
+// Route::fallback([EventController::class, 'index']);
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
@@ -25,6 +25,7 @@ Route::middleware('auth')->group(function () {
     
     Route::get('/events/create', [EventController::class, 'create'])->name('events.create');
     Route::get('/events/user', [EventController::class, 'show_user_events'])->name('events.user.events');
+    Route::get('/events/joined', [EventController::class, 'return_events'])->name('events.joined');
     Route::get('/events/{id}', [EventController::class, 'show'])->name('events.show');
     Route::post('/store', [EventController::class, 'store'])->name('events.store');
     Route::post('/events/join/{id}', [EventController::class, 'join_event'])->name('event.join');

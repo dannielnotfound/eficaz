@@ -5,7 +5,7 @@
                 <x-nav-link :href="route('events.user.events')" :active="request()->routeIs('events.user.events')">
                     {{ __('Meus eventos') }}
                 </x-nav-link>
-                <x-nav-link :href="route('events.index')" :active="request()->routeIs('events.index')">
+                <x-nav-link :href="route('events.joined')" :active="request()->routeIs('events.joined')">
                     {{ __('Eventos que estou participando') }}
                 </x-nav-link>
             </div>

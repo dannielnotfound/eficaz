@@ -24,12 +24,15 @@ class EventController extends Controller
     public function show($id)
     {
         $event = $this->model->find($id);
+        $user = auth()->user();
+        $events = $user->events;
+        $eventsAsParticipant = $user->eventsAsParticipant;
 
         if(!$event){
             return redirect()->back();
         }
 
-        return view('site.show', compact('event'));
+        return view('site.show', compact('event', 'eventsAsParticipant'));
     }
 
     public function show_user_events()
@@ -74,15 +77,22 @@ class EventController extends Controller
         $user = auth()->user();
         $user->eventsAsParticipant()->attach($event);
 
-        // $events = $user->eventsAsParticipant;
-        // dd($events);
-        // $events = $user->events;
-        // dd($events);
-        // $a = $events->eventsAsParticipant;
-        // dd($a);
+        $events = $user->events;
+        $eventsAsParticipant = $user->eventsAsParticipant;
+       
+    
+        return view('site.events_as_participant', compact('eventsAsParticipant'));
+        
+    }
 
-        // dd($event->users());
+    public function return_events()
+    {
+        $user = auth()->user();
 
+
+        $events = $user->events;
+        $eventsAsParticipant = $user->eventsAsParticipant;
+       
     
         return view('site.events_as_participant', compact('eventsAsParticipant'));
         

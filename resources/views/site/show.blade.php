@@ -66,7 +66,7 @@
                     <li class="text-gray-400"><span class="text-gray-600">Cidade: {{$event->city}}</span></li>
                     <li class="text-gray-400"><span class="text-gray-600">Endereço: {{$event->address}}</span></li>
                     <li class="text-gray-400"><span class="text-gray-600">Data: {{$event->date}}</span></li>
-                    <li class="text-gray-400"><span class="text-gray-600">Quantiade de pessoas confirmadas: {{$event->user->count()}}</span></li>
+                    <li class="text-gray-400"><span class="text-gray-600">Quantiade de pessoas confirmadas: {{count($eventsAsParticipant)}}</span></li>
                   </ul>
                 </div>
               </div>

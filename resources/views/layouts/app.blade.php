@@ -32,7 +32,7 @@
                 {{ $slot }}
             </main>
 
-            <footer class="bg-white shadow text-center mx-auto py-4 px-2  w-full mt-10 bottom-0"> 
+            <footer class="bg-white shadow text-center mx-auto py-4 px-2  w-full mt-10 relative fixed bottom-0"> 
                 <p>Desenvolvido com amor por Daniel Oliveira</p>
             </footer>
         </div>
