@@ -13,7 +13,6 @@
     </x-slot>
     <div class="container mx-auto px-4 ">
         <div class="mt-10 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
-            @dd(count($eventsAsParticipant))
             @foreach ($eventsAsParticipant as $event)
             <div class="max-w-sm rounded overflow-hidden shadow-lg bg-white scale-100  hover:scale-105 ease-in duration-100 relative">
                 <a href="{{ route('events.show', $event->id) }}">
@@ -30,7 +29,8 @@
                     </div>
                     <div class="px-6 py-4 flex justify-between">
                         <div>
-                            <form action="{{ route('events.destroy', $event->id) }}" method="POST" class="inline-block">
+                            <form action="{{ route('events.leave', $event->id) }}" method="POST" class="inline-block">
+                                @method('DELETE')
                                 @csrf
                                 <button type="submit" class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded">Sair do Evento</button>
                             </form>

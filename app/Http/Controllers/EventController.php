@@ -85,6 +85,21 @@ class EventController extends Controller
         
     }
 
+    public function leave_event($event_id)
+    {
+        $event = $this->model->find($event_id);
+        $user = auth()->user();
+        $user->eventsAsParticipant()->detach($event_id);
+
+
+        $events = $user->events;
+        $eventsAsParticipant = $user->eventsAsParticipant;
+       
+    
+        return view('site.events_as_participant', compact('eventsAsParticipant'));
+    }
+
+
     public function return_events()
     {
         $user = auth()->user();
