@@ -28,6 +28,7 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
     
     Route::get('/events/create', [EventController::class, 'create'])->name('events.create');
+    Route::get('/events/user', [EventController::class, 'show_user_events'])->name('events.user.events');
     Route::get('/events/{id}', [EventController::class, 'show'])->name('events.show');
     Route::post('/store', [EventController::class, 'store'])->name('events.store');
     Route::get('/events/edit/{id}', [EventController::class, 'edit'])->name('events.edit');

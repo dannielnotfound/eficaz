@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Event;
+use App\Models\User;
 use App\Http\Requests\StoreUpdateRequest;
 use Illuminate\Support\Facades\Auth;
 
@@ -30,6 +31,22 @@ class EventController extends Controller
 
         return view('site.show', compact('event'));
     }
+
+    public function show_user_events()
+    {   
+        $user_id = auth()->id();
+
+        $user = $this->model->findOrFail($user_id);
+    
+        if (!$user) {
+            return redirect()->back();
+        }
+    
+        $user_events = $this->model->where('user_id', $user_id)->get();
+    
+        return view('site.show_user_events', compact('user', 'user_events'));
+    }
+
 
     public function create()
     {

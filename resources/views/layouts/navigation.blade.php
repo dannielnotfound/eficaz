@@ -12,11 +12,11 @@
 
                 <!-- Navigation Links -->
                 <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
-                    <x-nav-link :href="route('events.index')" :active="request()->routeIs('dashboard')">
+                    <x-nav-link :href="route('events.index')" :active="request()->routeIs('events.index')">
                         {{ __('Eventos') }}
                     </x-nav-link>
 
-                    <x-nav-link :href="route('events.index')" :active="request()->routeIs('dashboard')">
+                    <x-nav-link :href="route('events.user.events')" :active="request()->routeIs('events.user.events')">
                         {{ __('Meus Eventos') }}
                     </x-nav-link>
 
@@ -26,7 +26,6 @@
                     
                 </div>
             </div>
-
             <!-- Settings Dropdown -->
             <div class="hidden sm:flex sm:items-center sm:ml-6">
                 <x-dropdown align="right" width="48">
@@ -116,7 +115,7 @@
                     {{ __('Profile') }}
                 </x-responsive-nav-link>
                 
-                <x-responsive-nav-link :href="route('events.index')" :active="request()->routeIs('dashboard')">
+                <x-responsive-nav-link :href="route('events.index')" :active="request()->routeIs('events.index')">
                     {{ __('Meus Eventos') }}
                 </x-responsive-nav-link>
     
